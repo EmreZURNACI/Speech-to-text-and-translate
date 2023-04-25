@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text and Translate</title>
+    <link rel="icon"
+        href="images/microphone-pen-podcast-writer-art-voice-creative-logo-icon-illustration-design-vector.jpg">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"
+        integrity="sha512-J9QfbPuFlqGD2CYVCa6zn8/7PEgZnGpM5qtFOBZgwujjDnG5w5Fjx46YzqvIh/ORstcj7luStvvIHkisQi5SKw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            $(".fa-microphone").toggle(
+                function () {
+                    $(".text").html(" ");
+                    $(this).css("color", "red");
+                    recognition.start();
+                },
+                function () {
+                    $(this).css("color", "#F1F6F9");
+                    recognition.stop();
+                    if ($(".text").html() == " ") {
+                        $(".text").html(`<span class="placeHolderText">Speak to Translate</span>`);
+                    }
+                }
+            )
+            $(".fa-microphone").one("click", function () {
+                alert(" If you see the red microphone you are listening. \n Try speaking into the microphone.")
+            })
+        })
+
+    </script>
+</head>
+
+<body class="alignment flex-column">
+    <h1 class="text-center fs-50px text-capitalize mb-5">speech to text and translate</h1>
+    <div class="container">
+        <div class="mainLang d-flex flex-column justify-content-between">
+            <div class="text"><span class="placeHolderText">Speak to Translate</span> </div>
+            <div class="languages align-items-center d-flex justify-content-between">
+                <i class="fa-solid fa-microphone" style="color: #F1F6F9;font-size: 30px;"></i>
+                <select name="lang" id="lang" onchange="changeLang(this)">
+                    <option value="tr-TR">Türkçe</option>
+                    <option value="en-US">English</option>
+                    <option value="sv-SE">Svenska</option>
+                    <option value="pt-PT">Portugal</option>
+                    <option value="ja-JP">日本語</option>
+                    <option value="ru-RU">Pусский</option>
+                    <option value="it-IT">Italiano</option>
+                    <option value="fr-FR">Français</option>
+                    <option value="es-ES">España</option>
+                </select>
+            </div>
+        </div>
+        <div class="translatedLang">
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
