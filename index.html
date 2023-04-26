@@ -16,19 +16,17 @@
         $(document).ready(function () {
             $(".fa-microphone").toggle(
                 function () {
-                    $(".text").html(" ");
                     $(this).css("color", "red");
                     recognition.start();
                 },
                 function () {
                     $(this).css("color", "#F1F6F9");
                     recognition.stop();
-                    if ($(".text").html() == " ") {
-                        $(".text").html(`<span class="placeHolderText">Speak to Translate</span>`);
-                    }
                 }
             )
             $(".fa-microphone").one("click", function () {
+                $(".text").html(" ");
+                $(".placeHolderText").html(" ");
                 alert(" If you see the red microphone you are listening. \n Try speaking into the microphone.")
             })
         })
@@ -38,14 +36,14 @@
 
 <body class="alignment flex-column">
     <h1 class="text-center fs-50px text-capitalize mb-5">speech to text and translate</h1>
-    <div class="container">
+    <div class="container d-flex">
         <div class="mainLang d-flex flex-column justify-content-between">
             <div class="text"><span class="placeHolderText">Speak to Translate</span> </div>
             <div class="languages align-items-center d-flex justify-content-between">
                 <i class="fa-solid fa-microphone" style="color: #F1F6F9;font-size: 30px;"></i>
-                <select name="lang" id="lang" onchange="changeLang(this)">
+                <select name="lang" class="lang" onchange="changeLang(this)">
                     <option value="tr-TR">Türkçe</option>
-                    <option value="en-US">English</option>
+                    <option value="en-GB">English</option>
                     <option value="sv-SE">Svenska</option>
                     <option value="pt-PT">Portugal</option>
                     <option value="ja-JP">日本語</option>
@@ -53,13 +51,27 @@
                     <option value="it-IT">Italiano</option>
                     <option value="fr-FR">Français</option>
                     <option value="es-ES">España</option>
+                    <option value="de-DE">Deustsch</option>
                 </select>
             </div>
         </div>
-        <div class="translatedLang">
-
+        <div class="translatedLang d-flex justify-content-between align-items-between flex-column">
+            <div class="translatedText"></div>
+            <div><select name="lang" class="lang" onchange="changeLangTo(this)">
+                    <option value="en-GB">English</option>
+                    <option value="tr-TR">Türkçe</option>
+                    <option value="sv-SE">Svenska</option>
+                    <option value="pt-PT">Portugal</option>
+                    <option value="ja-JP">日本語</option>
+                    <option value="ru-RU">Pусский</option>
+                    <option value="it-IT">Italiano</option>
+                    <option value="fr-FR">Français</option>
+                    <option value="es-ES">España</option>
+                    <option value="de-DE">Deustsch</option>
+                </select></div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 
