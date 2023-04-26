@@ -27,7 +27,7 @@
             $(".fa-microphone").one("click", function () {
                 $(".text").html(" ");
                 $(".placeHolderText").html(" ");
-                alert(" If you see the red microphone you are listening. \n Try speaking into the microphone.")
+                alert(" If you see the red microphone you are listening. \n Try speaking into the microphone. \n If you got the problem check your allows.")
             })
         })
 
@@ -56,7 +56,8 @@
             </div>
         </div>
         <div class="translatedLang d-flex justify-content-between align-items-between flex-column">
-            <div class="translatedText"></div>
+            <div class="translatedText"><span class="placeHolderText2 fs-2 d-inline-block align-middle">It will
+                    translate text when finished speaking</span></div>
             <div><select name="lang" class="lang" onchange="changeLangTo(this)">
                     <option value="en-GB">English</option>
                     <option value="tr-TR">Türkçe</option>

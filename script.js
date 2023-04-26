@@ -4,6 +4,7 @@ const text = document.querySelector(".text");
 const microfone = document.querySelector(".fa-microphone");
 const translatedText = document.querySelector(".translatedLang");
 const translateToText = document.querySelector(".translatedText");
+const placeHolderText2 = document.querySelector(".placeHolderText2");
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
 recognition.lang = language;
@@ -14,6 +15,7 @@ recognition.onspeechend = function () {
 recognition.onresult = function (event) {
     var transcript = event.results[0][0].transcript;
     text.innerHTML += "  " + transcript;
+    placeHolderText2.innerHTML = " ";
     transalteWords();
 };
 function changeLang(input) {
@@ -27,7 +29,7 @@ console.log(languageTo);
 function transalteWords() {
     let apiURl = `https://api.mymemory.translated.net/get?q=${text.innerHTML}&langpair=${recognition.lang}|${languageTo}`;
     fetch(apiURl).then(res => res.json()).then(data => {
-        translateToText.innerHTML += data.responseData.translatedText; console.log(recognition.lang);
+        translateToText.innerHTML = data.responseData.translatedText; console.log(recognition.lang);
         console.log(languageTo); console.log(data)
     });
 
